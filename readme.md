@@ -47,5 +47,3 @@ goals:
 # Run tests
 No official unit tests just played around with matplotlib, opening and recording audio files
 - from app root, `python app.py` currently just runs the test functions in tests/open_tests.py and tests/draw_tests.py. For draw tests streamlit is currently required. Streamlit test functions and imports must be commented out when running nonstreamlit tests. The methods perform wav drawing, and recording, and audio device id lookups through pyaudio streamlit and matplotlib.
-
-git commit -m "updated structure, filled out a readme, merged a related playground codebase to here"
