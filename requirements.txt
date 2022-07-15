@@ -1,0 +1,5 @@
+pyaudio
+pedalboard
+librosa
+matplotlib
+streamlit
