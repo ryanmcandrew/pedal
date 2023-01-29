@@ -11,6 +11,10 @@ contains pyaudio/matplotlib/pedalboard experiments - trying to make sense of som
 
 [pyaudio](https://people.csail.mit.edu/hubert/pyaudio/docs/)
 
+[pyside gui](https://pypi.org/project/PySide/#introduction)
+
+[realtime wave project](https://medium.com/geekculture/real-time-audio-wave-visualization-in-python-b1c5b96e2d39)
+
 # so far
 
 - played a file

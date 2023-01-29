@@ -7,7 +7,10 @@ class Recorder:
         self.device_index = None
         # self.
     
-    def record(self, seconds ):
+    def set_device_ind(self):
+        pass
+
+    def record(self, stream, seconds ):
         pass
 
     def pause(self):
@@ -16,5 +19,5 @@ class Recorder:
     def stop(self):
         pass
 
-    def play(self, clip):
+    def play(self, file):
         pass

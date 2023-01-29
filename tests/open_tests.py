@@ -10,7 +10,7 @@ import time
 WAVE_OUTPUT_FILENAME = "./data/audio_file.wav"
 
 def run():
-    # test_configs()
+    test_configs()
     # test_one()
     # test_two()
     # test_three()
@@ -21,6 +21,7 @@ def test_configs():
 
     for i in range(pa.get_device_count()):
         print(pa.get_device_info_by_index(i))
+        pass
     
     # for id in range(pa.get_host_api_count()):
     #     print(pa.get_host_api_info_by_index(id))
@@ -122,7 +123,7 @@ def test_three():
                     channels=CHANNELS,
                     rate=RATE,
                     input=True,
-                    input_device_index=2,
+                    input_device_index=8,
                     frames_per_buffer=CHUNK)
 
     print("* recording")
@@ -152,6 +153,7 @@ def test_three():
 def test_four():
 
     print('recording')
+    BUFFER_FRAME_SIZE = int(1024 / 2) #controls rate of playback
     RATE = 44100 #48000
     pa = pyaudio.PyAudio()
     stream_in = pa.open(
@@ -159,8 +161,8 @@ def test_four():
         channels=2,
         format=pyaudio.paInt16,
         input=True,                   # input stream flag
-        input_device_index=14,         # input device index
-        frames_per_buffer=1024
+        input_device_index=8,         # input device index
+        frames_per_buffer=BUFFER_FRAME_SIZE
     )
 
     # read 5 seconds of the input stream
@@ -184,7 +186,7 @@ def test_four():
     print('playing')
 
     # Open the sound file 
-    wf = wave.open('audio-recording.wav', 'rb')
+    wf = wave.open(WAVE_OUTPUT_FILENAME, 'rb')
 
         # Open a .Stream object to write the WAV file to
     # 'output = True' indicates that the sound will be played rather than recorded
@@ -192,16 +194,16 @@ def test_four():
                     channels = wf.getnchannels(),
                     rate = wf.getframerate(),
                     output = True,
-                    output_device_index=15)
+                    output_device_index=8)
 
     # Read data in chunks
-    data = wf.readframes(1024)
+    data = wf.readframes(BUFFER_FRAME_SIZE)
 
     # Play the sound by writing the audio data to the stream
     while data != b'':
         # print(data)
         stream_out.write(data)
-        data = wf.readframes(1024)
+        data = wf.readframes(BUFFER_FRAME_SIZE)
 
     # Close and terminate the stream
     stream_out.close()

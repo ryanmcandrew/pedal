@@ -1,0 +1,5 @@
+kivy
+pedalboard
+ffpyplayer
+pyaudio
+wave

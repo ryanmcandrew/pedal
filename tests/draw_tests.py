@@ -41,8 +41,8 @@ def main():
         filename = os.getcwd() + SAMPLE_DIR + i.name
         
         y, samplingRate = librosa.load(filename, sr=22050)
-        # librosa.display.waveplot(y, sr, ax=ax, x_axis='time')
-        librosa.display.waveshow(y, sr=samplingRate, ax=ax, x_axis='time') #deprecated
+        # librosa.display.waveplot(y, sr, ax=ax, x_axis='time') #deprecated
+        librosa.display.waveshow(y, sr=samplingRate, ax=ax, x_axis='time') 
         
         streamlit.pyplot(fig)
         streamlit.audio(i.sample, format='audio/wav')
