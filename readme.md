@@ -2,52 +2,43 @@
 
 contains pyaudio/matplotlib/pedalboard experiments - trying to make sense of something by mashing more mashings together..
 
-- draw tests: draw a wav with streamlit/matplotlib/librosa
-  - requires a streamlit launch currently
-- open tests: attempt opening audio input and recording
-  - requires python interpretter
-
 # References
 
-[pyaudio](https://people.csail.mit.edu/hubert/pyaudio/docs/)
+Documentation for open source modules
+- [kivy](https://kivy.org/doc/stable/)
+- [pyaudio](https://people.csail.mit.edu/hubert/pyaudio/docs/)
 
-[pyside gui](https://pypi.org/project/PySide/#introduction)
+- [pyside gui](https://pypi.org/project/PySide/#introduction)
 
-[realtime wave project](https://medium.com/geekculture/real-time-audio-wave-visualization-in-python-b1c5b96e2d39)
+- [pedalboard](https://spotify.github.io/pedalboard/)
 
-# so far
+- [python-sounddevice](https://readthedocs.org/projects/python-sounddevice/downloads/pdf/latest/)
 
-- played a file
-- recorded a file
-  - recording did not completely work. audio recorded was nearly inaudible. determining device id undetermined.
-- plot wav from file
+Similar open source examples
 
-# to do
+- [stefanobazzi/guitarboard](https://github.com/stefanobazzi/guitarboard)
 
-now:
-- f
-- refactor
-- display wav outside streamlit and remove streamlit
-- refactor
-- find solution to picking audio input
-- find solution to playing back a recording that is in progress
-- find solution to drawing a recording in progress
-- refactor
+Helpful articles
 
-goals:
-- plot wav from active input
-- feed input through the pedalboard package with modular design to account for varying effects in the signal chain
-- frame some basic controls in a window from some gui lib for:
-  - playback
-  - volume
-  - effect chain with minimal controls mapped to effect class attributes
+- [realtime wave project](https://medium.com/geekculture/real-time-audio-wave-visualization-in-python-b1c5b96e2d39)
+- [by domonic feeney](https://morioh.com/p/848d9c9a22b1)
+
+# Dependencies
+
+- See requirements.txt
+- May need to install apt packages - ffpyplayer
+
 
 # Program execution
 
-- python3
-- install depends by requirements.txt in conda environment
-- from app root, pass app.py to python interpretter `streamlit run app.py`
+- python -m venv pedal
+- source /path/to/venv/pedal/bin/activate
+- pip install -r requirements.txt
+- python app/app.py
 
 # Run tests
-No official unit tests just played around with matplotlib, opening and recording audio files
-- from app root, `python app.py` currently just runs the test functions in tests/open_tests.py and tests/draw_tests.py. For draw tests streamlit is currently required. Streamlit test functions and imports must be commented out when running nonstreamlit tests. The methods perform wav drawing, and recording, and audio device id lookups through pyaudio streamlit and matplotlib.
+No official unit tests yet. 
+
+- Past notes:
+  - just played around with matplotlib, opening and recording audio files
+  - from app root, `python app.py` currently just runs the test functions in tests/open_tests.py and tests/draw_tests.py. For draw tests streamlit is currently required. Streamlit test functions and imports must be commented out when running nonstreamlit tests. The methods perform wav drawing, and recording, and audio device id lookups through pyaudio streamlit and matplotlib.

@@ -1,5 +1,6 @@
-pyaudio
+kivy
 pedalboard
-librosa
+ffpyplayer
+pyaudio
+wave
 matplotlib
-streamlit
