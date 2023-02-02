@@ -1,6 +1,6 @@
 # Details
 
-contains pyaudio/matplotlib/pedalboard experiments - trying to make sense of something by mashing more mashings together..
+This software contains a kivy application that reveals the pedalboard interface. Currently contains experimental code and a basic framework for the kiby application. Much tbd.
 
 # References
 
