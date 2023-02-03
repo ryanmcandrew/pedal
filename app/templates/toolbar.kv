@@ -1,0 +1,17 @@
+#:kivy 1.0
+
+<ToolbarWidget>:
+    
+    BoxLayout:
+        Button:
+            text:'play'
+            on_press:root.play_wav()
+            # on_press:root.test_one()
+            # on_press:root.chorus()
+        Button:
+            id: stop_button
+            text:'stop'
+            on_press:root.stop_wav()
+        Button:
+            id: record
+            text:'record'

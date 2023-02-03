@@ -7,7 +7,7 @@ import time
 
 #Test functions that read available audio inputs,
 # and attempt to record from the inputs (1, 2, 3, 4)
-WAVE_OUTPUT_FILENAME = "./data/audio_file.wav"
+WAVE_OUTPUT_FILENAME = "app/data/ENDOFTHEYEAR_16.wav"
 
 def run():
     test_configs()
@@ -71,7 +71,7 @@ def test_one():
     p.terminate()
     # pedalboard
 
-def test_two():
+def test_two():10
     if len(sys.argv) < 2:
         print("Plays a wave file.\n\nUsage: %s filename.wav" % sys.argv[0])
         sys.exit(-1)
