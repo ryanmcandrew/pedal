@@ -1,0 +1,93 @@
+#:kivy 1.0
+
+# rate_hz float
+# depth float
+# centre_delay_ms
+# feedback
+# delay_seconds, feedback, mix
+
+#: import ew kivy.uix.effectwidget
+
+<ReverbWidget>:
+    Label:
+        text: 'Reverb - '
+         
+    BoxLayout:
+        Slider:
+            id: room_slider
+            min: 0
+            max: 1
+            step: .1
+            value: .5
+            orientation: 'vertical'
+            on_touch_move: root.update_reverb(room_slider.value, damping_slider.value, wet_level_slider.value, dry_level_slider.value, width_slider.value, freeze_mode_slider.value)
+        Label:
+            text: 'room - ' + str(round(room_slider.value, 2))
+    BoxLayout:
+        Slider:
+            id: damping_slider
+            min: 0.0
+            max: 1.0
+            step: 0.01
+            value: 0.5
+            orientation: 'vertical'
+            on_touch_move: root.update_reverb(room_slider.value, damping_slider.value, wet_level_slider.value, dry_level_slider.value, width_slider.value, freeze_mode_slider.value)
+        Label:
+            text: 'damping - ' + str(round(damping_slider.value, 2))
+    BoxLayout:
+        Slider:
+            id: wet_level_slider
+            min: 0
+            max: 1
+            step: .01
+            value: 0.33
+            orientation: 'vertical'
+            on_touch_move: root.update_reverb(room_slider.value, damping_slider.value, wet_level_slider.value, dry_level_slider.value, width_slider.value, freeze_mode_slider.value)
+        Label:
+            text: 'wet_level - ' + str(round(wet_level_slider.value, 1))
+    BoxLayout:
+        Slider:
+            id: dry_level_slider
+            min: 0
+            max: 1
+            step: .01
+            value: 0.4
+            orientation: 'vertical'
+            on_touch_move: root.update_reverb(room_slider.value, damping_slider.value, wet_level_slider.value, dry_level_slider.value, width_slider.value, freeze_mode_slider.value)
+        Label:
+            text: 'dry_level - ' + str(round(dry_level_slider.value, 1))
+    BoxLayout:
+        Slider:
+            id: width_slider
+            min: 0
+            max: 1
+            step: 0.1
+            value: 1.0
+            orientation: 'vertical'
+            on_touch_move: root.update_reverb(room_slider.value, damping_slider.value, wet_level_slider.value, dry_level_slider.value, width_slider.value, freeze_mode_slider.value)
+        Label:
+            text: 'width - ' + str(round(width_slider.value, 1))
+    BoxLayout:
+        Slider:
+            id: freeze_mode_slider
+            min: 0
+            max: 1
+            step: 0.1
+            value: 0.0
+            orientation: 'vertical'
+            on_touch_move: root.update_reverb(room_slider.value, damping_slider.value, wet_level_slider.value, dry_level_slider.value, width_slider.value, freeze_mode_slider.value)
+            
+        Label:
+            text: 'freeze_mode - ' + str(round(freeze_mode_slider.value, 1))
+
+
+    # BoxLayout:
+    #     Button:
+    #         text: 'play'
+    #         on_press: root.play_wav()
+    #         # on_press:root.test_one()
+    #         # on_press:root.chorus()
+    #     Button:
+    #         id: stop_button
+    #         text:'stop'
+    #         on_press:root.stop_wav()

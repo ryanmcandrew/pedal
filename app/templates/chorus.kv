@@ -6,27 +6,30 @@
 # feedback
 # mix
 
-#: import ew kivy.uix.effectwidget
-
 <ChorusWidget>:
-    # BoxLayout:
+
+    Label:
+        text: 'Chorus - '
          
     BoxLayout:
+    
         Slider:
             id: rate_slider
             min: 0
-            max: 100
-            step: 1
+            max: 25
+            step: .01
+            value: 1.0
             orientation: 'vertical'
             on_touch_move: root.update_chorus(rate_slider.value, depth_slider.value, centre_delay_slider.value, feedback_slider.value, mix_slider.value)
         Label:
-            text: 'rate - ' + str(round(rate_slider.value, 1))
+            text: 'rate - ' + str(round(rate_slider.value, 2))
     BoxLayout:
         Slider:
             id: depth_slider
             min: 0.0
             max: 1.0
             step: 0.01
+            value: 0.25
             orientation: 'vertical'
             on_touch_move: root.update_chorus(rate_slider.value, depth_slider.value, centre_delay_slider.value, feedback_slider.value, mix_slider.value)
         Label:
@@ -34,10 +37,11 @@
     BoxLayout:
         Slider:
             id: centre_delay_slider
-            min: 0.0
-            max: 100.0
-            step: 0.1
+            min: 0
+            max: 20
+            step: 1
             orientation: 'vertical'
+            value: 7.0
             on_touch_move: root.update_chorus(rate_slider.value, depth_slider.value, centre_delay_slider.value, feedback_slider.value, mix_slider.value)
         Label:
             text: 'centre_delay - ' + str(round(centre_delay_slider.value, 1))
@@ -45,8 +49,9 @@
         Slider:
             id: feedback_slider
             min: 0
-            max: 100
+            max: 1
             step: 0.1
+            value: 0.0
             orientation: 'vertical'
             on_touch_move: root.update_chorus(rate_slider.value, depth_slider.value, centre_delay_slider.value, feedback_slider.value, mix_slider.value)
         Label:
@@ -57,6 +62,7 @@
             min: 0
             max: 1
             step: 0.1
+            value: 0.5
             orientation: 'vertical'
             on_touch_move: root.update_chorus(rate_slider.value, depth_slider.value, centre_delay_slider.value, feedback_slider.value, mix_slider.value)
             
@@ -64,38 +70,13 @@
             text: 'mix - ' + str(round(mix_slider.value, 1))
 
 
-    BoxLayout:
-        Button:
-            text: 'play'
-            on_press: root.play_wav()
-            # on_press:root.test_one()
-            # on_press:root.chorus()
-        Button:
-            id: stop_button
-            text:'stop'
-            on_press:root.stop_wav()
-        Button:
-            id: reload_button
-            text:'reload'
-            on_press:root.reload_wav()
-        Slider:
-            id: seek_input
-            min: 0
-            max: 100
-            step: 1
-            text:'seek'
-            orientation: 'horizontal'
-            on_touch_move: root.seek_wav(seek_input.value)
-        Label:
-            text: 'seek - ' + str(round(seek_input.value, 1))
     # BoxLayout:
-    #     # orientation:vertical
-    #     Spinner:
-    #         id: spinner_pick
-    #         values: root.audio_devices()
-    #         # values: ["test", "test2"]
-    #         text: 'audio device'
-    #         size: 300, 44
-    #         size_hint: None, None
-    #         # on_text: root.update_active_audio_device(spinner_pick.value)
-    #         orientation: 'horizontal'
+    #     Button:
+    #         text: 'play'
+    #         on_press: root.play_wav()
+    #         # on_press:root.test_one()
+    #         # on_press:root.chorus()
+    #     Button:
+    #         id: stop_button
+    #         text:'stop'
+    #         on_press:root.stop_wav()
