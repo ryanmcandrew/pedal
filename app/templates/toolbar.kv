@@ -37,7 +37,7 @@
             id: spinner_pick
             values: root.audio_devices()
             # values: ["test", "test2"]
-            text: 'audio device'
+            text: 'output audio device'
             size: 300, 44
             size_hint: None, None
             on_text: print(self.text); root.update_active_audio_device(spinner_pick.text); 

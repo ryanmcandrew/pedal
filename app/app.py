@@ -9,7 +9,7 @@ import lib.widgets.reverb
 import lib.widgets.delay
 import lib.widgets.toolbar
 
-class kvfileApp(BoxLayout, App):
+class PedalsApp(BoxLayout, App):
     def build(self):
         global delay_widget
         
@@ -39,5 +39,5 @@ if __name__ == '__main__':
     chorus_widget = lib.widgets.chorus.ChorusWidget()
 
     # Builder.load_file("templates/delay.kv")
-    kv = kvfileApp()
+    kv = PedalsApp()
     kv.run()
