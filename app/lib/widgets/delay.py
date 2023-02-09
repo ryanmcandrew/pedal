@@ -63,20 +63,6 @@ class DelayWidget(BoxLayout):
         functions.update_delay(delay_seconds, feedback, mix)
 
     def on_touch_move(self, touch):
-        pass
-        # if self.collide_point(touch.pos):
-        print("----------------------------------------------------------------")
-        # print(self)
-        # self.delay_obj
-        # print(self.delay_obj)
-        # print(touch.pos)
-        # print(touch)
-        # print('delay')
-        print("----------------------------------------------------------------")
-        # print(touch.grab(self))
-        # print('touch id: ' + str(touch.id))
-        # print('selfid: ' + str(self.id))
-        # if touch.
         if self.delay_seconds_slider.collide_point(*touch.pos):
             self.delay_obj.delay_seconds = self.delay_seconds_slider.value
             self.delay_seconds_slider_label.text = "delay_seconds - " + str(self.delay_seconds_slider.value)

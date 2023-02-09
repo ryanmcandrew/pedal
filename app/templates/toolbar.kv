@@ -40,5 +40,5 @@
             text: 'audio device'
             size: 300, 44
             size_hint: None, None
-            # on_text: root.update_active_audio_device(spinner_pick.value)
+            on_text: print(self.text); root.update_active_audio_device(spinner_pick.text); 
             orientation: 'horizontal'

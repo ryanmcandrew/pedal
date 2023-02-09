@@ -1,8 +1,8 @@
 # Details
 
-This software contains a simple kivy application with an intention to reveal a few aspects of the spotify pedalboard interface on a gui. Currently contains a "functioning" kivy application with the ability to play back a hard-coded wav recording and add effects from thye spotify pedalboard effects python library. Implemented audio streaming to provide a callback when playing chunks that can modify the stream by sending it through the spotify pedalboard effects modules. Attributes of the effects modules are mapped to kivy slider componenets. Mostly experimental, bad, spaghetti code and a basic framework for kivy atm.
+This software contains a simple kivy application with an intention to reveal a few aspects of the spotify pedalboard interface on a gui. Currently contains a "functioning" kivy application with the ability to play back a hard-coded wav recording and add effects from the spotify pedalboard package. Implemented audio streaming to provide a callback when playing chunks that can modify the stream by sending it through the spotify pedalboard effects modules. Attributes of the effects modules are mapped to kivy slider componenets. Mostly experimental, bad, spaghetti code and a basic framework for kivy atm.
 
-Nothing is tested in mac/windows. 99% chance will not work.
+Nothing is tested in mac/windows. 99% chance will not work. Although, both kivy and pyAudio claim to be highly portable.
 
 # To do
 
@@ -16,10 +16,10 @@ Nothing is tested in mac/windows. 99% chance will not work.
 # Bugs
 
 - 001 - audio chops up when moving controls and the window
-- 002 - updating one control on the window updates all of them - possibly a cause for bug 001.
+  - I believe the GIL is screwing me for this. Might need to base the root app in C++, though possibly can run separate processes and implement messaging from the kivy gui to command audio controls. Only tried threading the audio playback, could try threading the kvApp.run() routine in addition to audio. Proper pipeline would likely help.
 - 003 - streamed 32bit wav file is sped up by doubling the framerate to cover up a bug that causes normal frame rate to sound bit crushed on playback
-- 004 - the audio device id to send audio to is hard coded to be the value I saw my active audio was on my dev machine. It should be mapped to a configuration file drop down menu and chosen on the window. 
-- 005 - tried to fill out delay widget class with more attributes for the pedalboard effects. on_move_update isn't properly updating the delay module despite mapping the pedalboard.Delay attribute seemingly correctly to coprresponding gui control attributes of the widget.
+- 004 - audio device ID no longer hard coded, but changing the device ID after the first play of audio will not change the device used due to null check in play_wav_thread()
+- 005 - tried to fill out delay widget class with more attributes for the pedalboard effects. on_move_update isn't properly updating the delay module despite mapping the pedalboard.Delay attribute seemingly correctly to corresponding gui control attributes of the widget.
 
 # References
 
@@ -60,8 +60,8 @@ Helpful articles
 
 - python -m venv ~/.venv/pedal
 - source /path/to/venv/pedal/bin/activate
+- cd /path/to/app 
 - pip install -r requirements.txt
-- nav to /path/to/app in file explorer and open terminal via context menu or cd
 - python app/app.py
 
 # Run tests

@@ -15,5 +15,7 @@ class ToolbarWidget(BoxLayout):
         functions.seek_wav(value)
     def reload_wav(self):
         functions.reload_wav()
+    def update_active_audio_device(self, value):
+        functions.update_active_audio_device(value)
     def audio_devices(self):
         return functions.audio_devices()

@@ -17,30 +17,26 @@ import lib.widgets.chorus
 import lib.widgets.reverb
 import lib.widgets.delay
 import lib.widgets.toolbar
-# import lib.
 
 from app import delay_widget
-
 
 WAV_FILE_WRITE = 'app/data/output.wav'
 WAV_FILE_READ = 'app/data/ENDOFTHEYEAR_32-2.wav'
 OUTPUT_DEVICE_INDEX= 9
-BUFFER_FRAME_SIZE = int(1024 / 2) #controls rate of playback
-# BUFFER_FRAME_SIZE = int(1024 ) #controls rate of playback
+BUFFER_FRAME_SIZE = int(1024 ) #controls rate of playback
 
 def callback(in_data, frame_count, time_info, status):
     global chorus
     # global delay
     global delay_widget
     global reverb
-
-    # print(delay_widget)
-    # print(delay_widget.feedback_slider.value)
-    print(delay_widget.delay_obj)
+    global board
 
     try:
+        data = file.read(int(frame_count *2))
+        # data = in_data #causes pedalboard to yell about 32bit and 64bit
         board = Pedalboard([chorus, delay_widget.delay_obj, reverb])
-        data = file.read(int(frame_count * 2))
+        # data = file.read(int(BUFFER_FRAME_SIZE ))
         data = board(np.array(data), 44100, reset=False)
     except Exception as e:
         print('Exception caught:')
@@ -48,24 +44,6 @@ def callback(in_data, frame_count, time_info, status):
 
     return (data, pyaudio.paContinue)
     
-def play_wav_thread():
-    # print('test')
-    # pass
-    global stream
-    global file
-    global p
-    global delay_widget
-    # file = AudioFile(WAV_FILE_READ)
-    # p = pyaudio.PyAudio()
-    print ('audio thread:')
-    print(os.getpid())
-    # if not stream:
-    stream = p.open(format=p.get_format_from_width(4), channels=2, rate=int(file.samplerate), \
-            output=True, input_device_index=OUTPUT_DEVICE_INDEX, stream_callback=callback)
-    # stream.stop_stream()
-    # stream.close()
-    # p.terminate()
-
 def write_effects_out():
 
     # wf = wave.open('client/' + WAV_FILE_READ, 'rb')
@@ -96,11 +74,12 @@ def write_effects_out():
     # stream_out.stop_stream()
     # stream_out.close()
 
-def play_wav():
+def play_wav_thread():
     global stream
     global p
-    global audio_process
+    # global audio_process
     global file
+    global OUTPUT_DEVICE_INDEX
     # global sound
          # global sound
     # if sound:
@@ -113,15 +92,23 @@ def play_wav():
     # print(os.getpid())
     # audio_process.daemon = True
     # audio_process.start()   
+    print("using device: ", str(OUTPUT_DEVICE_INDEX))
     if not stream:
         stream = p.open(format=p.get_format_from_width(4), channels=2, rate=int(file.samplerate), \
             output=True, input_device_index=OUTPUT_DEVICE_INDEX, stream_callback=callback)
-   
+
+def play_wav():
+    global audio_process
+    audio_process = threading.Thread(target=play_wav_thread, args=())
+    audio_process.start()
        
 def stop_wav():
     # global sound
+    # global audio_process
     # if sound:
         # sound.stop()
+    # audio_process.terminate()
+    # audio_process.kill()
     global stream
     global p
     global file
@@ -156,16 +143,20 @@ def audio_devices():
     global p
     result = []
     for i in range(p.get_device_count()):
-        result.append(str(p.get_device_info_by_index(i).get('name') + " - " + \
-            str(p.get_device_info_by_index(i).get('index')) + "-" + \
-            str(p.get_device_info_by_index(i).get('maxOutputChannels')) + "-" + \
-            str(p.get_device_info_by_index(i).get('maxInputChannels')) + "-" \
-        ))
+        result.append("id: \"" + str(p.get_device_info_by_index(i).get('index')) + "\" " + \
+            "name: \"" + str(p.get_device_info_by_index(i).get('name')) + "\""
+        )
         # result.append(str(pa.get_device_info_by_index(i)))
     return result
 
-def update_active_audio_device(self, value):
-    OUTPUT_DEVICE_INDEX = value
+def update_active_audio_device(value):
+    global OUTPUT_DEVICE_INDEX
+    
+    value = str(value)
+    value = value[value.find('\"'):value.find('name: ')]
+    value = value.replace('\"', '')
+
+    OUTPUT_DEVICE_INDEX = int(value)
 
 def update_chorus(rate, depth, delay, feedback, mix):
     global chorus
@@ -225,19 +216,13 @@ def update_delay(delay_seconds, feedback, mix):
 sound = SoundLoader.load(WAV_FILE_READ)
 file = AudioFile(WAV_FILE_READ)
 p = pyaudio.PyAudio()
-# stream = p.Stream(p, rate = int(file.samplerate), channels=file.num_channels, format=p.get_format_from_width(4), output=True)
 stream = None
 chorus = Chorus()
 # chorus_widget = ChorusWidget()
 reverb = Reverb()
-# delay = Delay()
-# delay = lib.widgets.delay.DelayWidget()
-# delay = app.
-# pa = pyaudio.PyAudio()
-# board = Pedalboard([chorus, Reverb(room_size=0.25)])
-# board = Pedalboard([chorus])
+
 board = Pedalboard([])
 # audio_process = multiprocessing.Process(target=play_wav_thread, args=())
-audio_process = threading.Thread(target=play_wav_thread, args=())
+audio_process = None
 
 # write_effects_out()
