@@ -6,8 +6,6 @@ Nothing is tested in mac/windows. 99% chance will not work. Although, both kivy 
 
 # To do
 
-- fix bugs / refactor into a reasonable pipeline
-- draw wavform on window
 - record audio
 - open mic and hear playback
 - make window layout look like designs
@@ -17,9 +15,8 @@ Nothing is tested in mac/windows. 99% chance will not work. Although, both kivy 
 
 - 001 - audio chops up when moving controls and the window
   - I believe the GIL is screwing me for this. Might need to base the root app in C++, though possibly can run separate processes and implement messaging from the kivy gui to command audio controls. Only tried threading the audio playback, could try threading the kvApp.run() routine in addition to audio. Proper pipeline would likely help.
-- 003 - streamed 32bit wav file is sped up by doubling the framerate to cover up a bug that causes normal frame rate to sound bit crushed on playback
-- 004 - audio device ID no longer hard coded, but changing the device ID after the first play of audio will not change the device used due to null check in play_wav_thread()
-- 005 - tried to fill out delay widget class with more attributes for the pedalboard effects. on_move_update isn't properly updating the delay module despite mapping the pedalboard.Delay attribute seemingly correctly to corresponding gui control attributes of the widget.
+- 004 - audio device ID no longer hard coded (refactor lost this bit of code need to redo), but changing the device ID after the first play of audio will not change the device used due to null check in play_wav_thread()
+
 
 # References
 
@@ -74,3 +71,7 @@ No official unit tests yet.
 - Past notes:
   - just played around with matplotlib, opening and recording audio files
   - test functions in tests/open_tests.py and tests/draw_tests.py. The methods perform wav drawing, and recording, and audio device id lookups through pyaudio streamlit and matplotlib.
+
+# Current GUI Sample Screenshot
+
+![Screenshot of app](docs/Screenshot%20from%202023-06-04%2019-50-29.png)
