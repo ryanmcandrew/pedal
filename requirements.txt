@@ -1,6 +1,10 @@
 kivy
+kivy-garden
+kivy_garden
+kivy_garden.graph
 pedalboard
 ffpyplayer
 pyaudio
 wave
 matplotlib
+librosa

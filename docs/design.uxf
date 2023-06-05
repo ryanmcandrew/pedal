@@ -1,0 +1,16 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>60</x><y>240</y><w>190</w><h>200</h></coordinates><panel_attributes>Tools
+--
+play
+pause
+stop
+change bpm
+change time signature
+Add effects
+remove effects
+record input
+add file (mp3, wav)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>60</x><y>40</y><w>320</w><h>180</h></coordinates><panel_attributes>AudioController</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>140</y><w>100</w><h>70</h></coordinates><panel_attributes>Stream
+--
+Effects Chain</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>70</x><y>70</y><w>100</w><h>60</h></coordinates><panel_attributes>Stream
+--
+Effects Chain</panel_attributes><additional_attributes></additional_attributes></element></diagram>

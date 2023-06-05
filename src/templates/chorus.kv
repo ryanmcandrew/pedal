@@ -1,0 +1,70 @@
+#:kivy 1.0
+
+# rate_hz float
+# depth float
+# centre_delay_ms
+# feedback
+# mix
+
+<ChorusLayout>:
+
+    Label:
+        text: 'Chorus - '
+         
+    BoxLayout:
+    
+        Slider:
+            id: rate_slider
+            min: 0
+            max: 25
+            step: .01
+            value: 1.0
+            orientation: 'vertical'
+            on_touch_move: root.update('rate', rate_slider.value)
+        Label:
+            text: 'rate - ' + str(round(rate_slider.value, 2))
+    BoxLayout:
+        Slider:
+            id: depth_slider
+            min: 0.0
+            max: 1.0
+            step: 0.01
+            value: 0.25
+            orientation: 'vertical'
+            on_touch_move: root.update('depth', depth_slider.value)
+        Label:
+            text: 'depth - ' + str(round(depth_slider.value, 2))
+    BoxLayout:
+        Slider:
+            id: centre_delay_slider
+            min: 0
+            max: 20
+            step: 1
+            orientation: 'vertical'
+            value: 7.0
+            on_touch_move: root.update('centre delay', centre_delay_slider.value)
+        Label:
+            text: 'centre_delay - ' + str(round(centre_delay_slider.value, 1))
+    BoxLayout:
+        Slider:
+            id: feedback_slider
+            min: 0
+            max: 1
+            step: 0.1
+            value: 0.0
+            orientation: 'vertical'
+            on_touch_move: root.update('feedback', feedback_slider.value)
+        Label:
+            text: 'feedback - ' + str(round(feedback_slider.value, 1))
+    BoxLayout:
+        Slider:
+            id: mix_slider
+            min: 0
+            max: 1
+            step: 0.1
+            value: 0.5
+            orientation: 'vertical'
+            on_touch_move: root.update('mix', mix_slider.value)
+            
+        Label:
+            text: 'mix - ' + str(round(mix_slider.value, 1))

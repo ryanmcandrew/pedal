@@ -37,6 +37,10 @@ Documentation for open source modules
 
 - [python-for-android](https://python-for-android.readthedocs.io/en/latest/quickstart/)
 
+- [dsp guide](http://www.dspguide.com/pdfbook.htm)
+
+- [making audio plugins](https://www.martin-finke.de/tags/making_audio_plugins.html)
+
 Similar open source examples
 
 - [stefanobazzi/guitarboard](https://github.com/stefanobazzi/guitarboard)
