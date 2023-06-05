@@ -8,6 +8,7 @@
         text: 'Delay - '
         
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: delay_seconds_slider
             min: 0
@@ -18,8 +19,9 @@
             on_touch_move: root.update('delay_seconds', delay_seconds_slider.value)
         Label:
             text: 'delay_seconds - ' + str(round(delay_seconds_slider.value, 2))
+            size_hint_y:0.05
     BoxLayout:
-        
+        orientation: 'vertical'
         Slider:
             id: feedback_slider
             min: 0.0
@@ -30,8 +32,10 @@
             on_touch_move: root.update('feedback', feedback_slider.value)
         Label:
             text: 'feedback - ' + str(round(feedback_slider.value, 2))
+            size_hint_y:0.05
 
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: mix_slider
             min: 0
@@ -42,3 +46,13 @@
             on_touch_move: root.update('mix', mix_slider.value)
         Label:
             text: 'mix - ' + str(round(mix_slider.value, 1))
+            size_hint_y:0.05
+
+    BoxLayout:
+        orientation:'vertical'
+
+    BoxLayout:
+        orientation:'vertical'
+
+    BoxLayout:
+        orientation:'vertical'

@@ -12,7 +12,7 @@
         text: 'Chorus - '
          
     BoxLayout:
-    
+        orientation: 'vertical'
         Slider:
             id: rate_slider
             min: 0
@@ -22,8 +22,10 @@
             orientation: 'vertical'
             on_touch_move: root.update('rate', rate_slider.value)
         Label:
+            size_hint_y: 0.05
             text: 'rate - ' + str(round(rate_slider.value, 2))
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: depth_slider
             min: 0.0
@@ -33,8 +35,10 @@
             orientation: 'vertical'
             on_touch_move: root.update('depth', depth_slider.value)
         Label:
+            size_hint_y: 0.05
             text: 'depth - ' + str(round(depth_slider.value, 2))
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: centre_delay_slider
             min: 0
@@ -44,8 +48,10 @@
             value: 7.0
             on_touch_move: root.update('centre delay', centre_delay_slider.value)
         Label:
+            size_hint_y: 0.05
             text: 'centre_delay - ' + str(round(centre_delay_slider.value, 1))
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: feedback_slider
             min: 0
@@ -55,8 +61,10 @@
             orientation: 'vertical'
             on_touch_move: root.update('feedback', feedback_slider.value)
         Label:
+            size_hint_y: 0.05
             text: 'feedback - ' + str(round(feedback_slider.value, 1))
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: mix_slider
             min: 0
@@ -67,4 +75,8 @@
             on_touch_move: root.update('mix', mix_slider.value)
             
         Label:
+            size_hint_y: 0.05
             text: 'mix - ' + str(round(mix_slider.value, 1))
+
+    BoxLayout:
+        orientation:'vertical'

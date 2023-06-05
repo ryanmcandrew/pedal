@@ -1,0 +1,17 @@
+#:kivy 1.0
+
+<AudioManagerSettingsLayout>:
+    size_hint_y: 0.5
+    BoxLayout:
+        Spinner:
+            id: output_device_picker
+            text:"choose output device"
+            values: root.audio_devices()
+            on_text: root.update_active_output_device(output_device_picker.text); 
+    BoxLayout:
+        
+        Spinner:
+            id: input_device_picker
+            text:"choose input device"
+            values: root.audio_devices()
+            on_text: root.update_active_input_device(input_device_picker.text); 

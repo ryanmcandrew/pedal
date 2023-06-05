@@ -1,6 +1,7 @@
 #:kivy 1.0
 
 <RootBoxLayout>:
+    size_hint_y: 0.5
     BoxLayout:
         Button: 
             text:"play"
@@ -8,5 +9,7 @@
         Button:
             text:"stop"
             on_release: root.stop()
-        # Button:
-        #     text:"record"
+
+        Button:
+            text:"record"
+            on_release: root.record()

@@ -1,0 +1,38 @@
+{
+    "audio-channel-1": {
+        "samples":
+        {
+            "sample-1": "samples/guitar1.wav",
+            "sample-2": "ENDOFTHEYEAR_32.wav"
+        },        
+        "effects":
+        {
+            "chorus":
+            {
+                "mix":0.2
+            }
+        },
+        "armed":true
+    },
+
+    "audio-channel-2" :
+    {
+        "samples":
+        {
+            "audioFile3": "guitar1.wav",
+            "audioFile4": "guitar2.wav"
+        },
+        "effects":
+        {
+            "chorus":
+            {
+                "mix":0.2
+            },
+            "delay":
+            {
+                "mix":0.2
+            }
+        },
+        "armed":false
+    }
+}

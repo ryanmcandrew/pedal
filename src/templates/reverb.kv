@@ -13,6 +13,7 @@
         text: 'Reverb - '
          
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: room_slider
             min: 0
@@ -23,7 +24,9 @@
             on_touch_move: root.update('room', room_slider.value)
         Label:
             text: 'room - ' + str(round(room_slider.value, 2))
+            size_hint_y:0.15
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: damping_slider
             min: 0.0
@@ -34,7 +37,9 @@
             on_touch_move: root.update('damping', damping_slider.value)
         Label:
             text: 'damping - ' + str(round(damping_slider.value, 2))
+            size_hint_y:0.15
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: wet_level_slider
             min: 0
@@ -45,7 +50,9 @@
             on_touch_move: root.update('wet level', wet_level_slider.value)
         Label:
             text: 'wet_level - ' + str(round(wet_level_slider.value, 1))
+            size_hint_y:0.15
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: dry_level_slider
             min: 0
@@ -56,7 +63,9 @@
             on_touch_move: root.update('dry level', dry_level_slider.value)
         Label:
             text: 'dry_level - ' + str(round(dry_level_slider.value, 1))
+            size_hint_y:0.15
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: width_slider
             min: 0
@@ -67,7 +76,9 @@
             on_touch_move: root.update('width', width_slider.value)
         Label:
             text: 'width - ' + str(round(width_slider.value, 1))
+            size_hint_y:0.15
     BoxLayout:
+        orientation: 'vertical'
         Slider:
             id: freeze_mode_slider
             min: 0
@@ -79,3 +90,4 @@
             
         Label:
             text: 'freeze_mode - ' + str(round(freeze_mode_slider.value, 1))
+            size_hint_y:0.15

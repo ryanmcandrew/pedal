@@ -8,6 +8,7 @@ from core.controller.chorus import ChorusLayout
 from core.controller.delay import DelayLayout
 from core.controller.reverb import ReverbLayout
 from core.controller.graph import GraphLayout
+from core.controller.audioManager import AudioManagerSettingsLayout
 
 import logging
 
@@ -18,7 +19,8 @@ class Pedal(App):
     templates = {
         'templates/root.kv', 
         'templates/graph.kv',
-        'templates/chorus.kv', 
+        'templates/chorus.kv',
+        'templates/audioManager.kv',  
         'templates/reverb.kv', 
         'templates/delay.kv', 
     }
@@ -32,18 +34,20 @@ class Pedal(App):
             Builder.load_file(str(i))
     
         # grid = BoxLayout(orientation='horizontal')
-        grid = GridLayout(rows=5)
+        grid = GridLayout(rows=6)
 
         root = RootBoxLayout()
         chorus = ChorusLayout()
         delay = DelayLayout()
         reverb = ReverbLayout()
         graph = GraphLayout()
+        audioManager = AudioManagerSettingsLayout()
 
         root.effect_chain.append(chorus.chorus)
         root.effect_chain.append(delay.delay)
         root.effect_chain.append(reverb.reverb)
         
+        grid.add_widget(audioManager)
         grid.add_widget(root)
         grid.add_widget(graph)
         grid.add_widget(chorus)

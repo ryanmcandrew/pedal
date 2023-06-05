@@ -1,21 +1,26 @@
 # Details
 
-This software contains a simple kivy application with an intention to reveal a few aspects of the spotify pedalboard interface on a gui. Currently contains a "functioning" kivy application with the ability to play back a hard-coded wav recording and add effects from the spotify pedalboard package. Implemented audio streaming to provide a callback when playing chunks that can modify the stream by sending it through the spotify pedalboard effects modules. Attributes of the effects modules are mapped to kivy slider componenets. Mostly experimental, bad, spaghetti code and a basic framework for kivy atm.
+This software contains a simple kivy application with an intention to reveal a few aspects of the spotify pedalboard interface on a gui. Has functions to play back a hard-coded wav recording and add effects from the spotify pedalboard package. Implemented audio streaming with a callback when playing chunks that can modify the stream by sending it through the spotify pedalboard effects modules. Attributes of the effects modules are mapped to kivy slider componenets.
 
-Nothing is tested in mac/windows. 99% chance will not work. Although, both kivy and pyAudio claim to be highly portable.
+Nothing is tested in mac/windows. 68% chance will not work. Although, both kivy and pyAudio claim to be highly portable. requires python 10
 
 # To do
 
 - record audio
 - open mic and hear playback
+- add effects scrollview
+- add audio channels
+- map effects to channels
+- add audio channel scrollview
+- add channel arm
+- add play arrangement from different channels
 - make window layout look like designs
 - export / render effected wavform to a file
 
 # Bugs
 
-- 001 - audio chops up when moving controls and the window
-  - I believe the GIL is screwing me for this. Might need to base the root app in C++, though possibly can run separate processes and implement messaging from the kivy gui to command audio controls. Only tried threading the audio playback, could try threading the kvApp.run() routine in addition to audio. Proper pipeline would likely help.
-- 004 - audio device ID no longer hard coded (refactor lost this bit of code need to redo), but changing the device ID after the first play of audio will not change the device used due to null check in play_wav_thread()
+- 001 - audio chops up when moving the window and using scroll wheel on menus/navigating menus
+  - I believe the GIL is biting  me for this. Might need to base the root app in C++, though possibly can run separate processes and implement messaging from the kivy gui to command audio controls. Only tried threading the audio playback
 
 
 # References
@@ -53,25 +58,20 @@ Helpful articles
 - See requirements.txt
 - May need to install system packages (apt/homebrew/yum/choco/..etc) to support pip modules. such as, ffpyplayer
 - may need to fiddle with ALSA/pulseaudio
-
 - still untested on a fresh system - likely more problems.
-
 
 # Program execution
 
 - python -m venv ~/.venv/pedal
-- source /path/to/venv/pedal/bin/activate
-- cd /path/to/app 
+- source ~/.venv/pedal/bin/activate
+  - windows: ~/.venv/pedal/bin/Activate.ps1 or ~/.venv/pedal/bin/Activate
+- cd /path/to/app
 - pip install -r requirements.txt
-- python app/app.py
+- python src/main.py
 
 # Run tests
 No official unit tests yet. 
 
-- Past notes:
-  - just played around with matplotlib, opening and recording audio files
-  - test functions in tests/open_tests.py and tests/draw_tests.py. The methods perform wav drawing, and recording, and audio device id lookups through pyaudio streamlit and matplotlib.
+# GUI Sample Screenshot
 
-# Current GUI Sample Screenshot
-
-![Screenshot of app](docs/Screenshot%20from%202023-06-04%2019-50-29.png)
+![Screenshot of app](docs/Screenshot%20from%202023-06-05%2002-32-44.png)

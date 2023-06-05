@@ -1,7 +1,7 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 import logging
-from core.audio import AudioStream
+from core.audio import AudioOutputStream
 import core.audio
 import pedalboard
 

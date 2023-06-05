@@ -1,10 +1,10 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 import logging
-from core.audio import AudioStream
+from core.audio import AudioOutputStream, AudioManager
 import core.audio
 
-class RootBoxLayout(BoxLayout, AudioStream):
+class RootBoxLayout(BoxLayout, AudioOutputStream, AudioManager):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         file_path = core.audio.WAV_FILE_READ

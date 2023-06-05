@@ -1,5 +1,5 @@
-import core.audio as audio
-
 environment = {
-    'audioManager': audio.AudioManager()
+    'outputDeviceIndex':9,
+    'inputDeviceIndex':9,
+    'pathToWavData': 'data/samples'
 }
