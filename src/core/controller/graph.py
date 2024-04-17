@@ -23,7 +23,9 @@ class GraphLayout(BoxLayout):
         fig, ax = plt.subplots(1,1)
         plt.ylabel = 'Amplitude'
         y, samplingRate = librosa.load(core.audio.WAV_FILE_READ, sr=22050)
-        librosa.display.waveshow(y, sr=samplingRate, ax=ax, x_axis='time')
+        # below deprecated
+        # librosa.display.waveshow(y, sr=samplingRate, ax=ax, x_axis='time')
+        librosa.display.waveshow(y, sr=samplingRate, ax=ax, axis='time')
         self.dev_canvas = FigureCanvasKivyAgg( fig )
 
         self.graph.add_widget(self.dev_canvas)
