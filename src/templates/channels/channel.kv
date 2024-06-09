@@ -1,0 +1,30 @@
+#:kivy 1.0
+
+# channel type selector
+# input channel selector
+# playback on/off
+# feedback
+# solo
+# arm
+
+<ChorusLayout>:
+
+    Label:
+        text: 'Generic Channel - '
+         
+    BoxLayout:
+        orientation: 'vertical'
+        Slider:
+            id: rate_slider
+            min: 0
+            max: 25
+            step: .01
+            value: 1.0
+            orientation: 'vertical'
+            on_touch_move: root.update('rate', rate_slider.value)
+        Label:
+            size_hint_y: 0.05
+            text: 'rate - ' + str(round(rate_slider.value, 2))
+
+    BoxLayout:
+        orientation:'vertical'
